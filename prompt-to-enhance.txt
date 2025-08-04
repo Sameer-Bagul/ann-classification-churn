@@ -1,0 +1,2 @@
+this is my ANN project 
+I want a complete readme for this with great teaching explanations and also in app.py I want nit and clean code with comments to teach each imp part and the explanations through out the code must include all definitions and other details to learn this on self pace 
