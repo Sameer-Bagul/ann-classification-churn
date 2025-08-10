@@ -18,9 +18,7 @@ with open('onehot_encoder_geo.pkl', 'rb') as file:
 with open('scaler.pkl', 'rb') as file:
     scaler = pickle.load(file)
 
-
-## streamlit app
-st.title('Customer Churn PRediction')
+st.title('Customer Churn Prediction')
 
 # User input
 geography = st.selectbox('Geography', onehot_encoder_geo.categories_[0])
@@ -54,9 +52,15 @@ geo_encoded_df = pd.DataFrame(geo_encoded, columns=onehot_encoder_geo.get_featur
 # Combine one-hot encoded columns with input data
 input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df], axis=1)
 
+# Debug prints to verify column names (optional)
+st.write("Scaler expected features:", scaler.feature_names_in_)
+st.write("Input data columns:", input_data.columns.tolist())
+
+# Reorder input_data columns to match scaler
+input_data = input_data[scaler.feature_names_in_]
+
 # Scale the input data
 input_data_scaled = scaler.transform(input_data)
-
 
 # Predict churn
 prediction = model.predict(input_data_scaled)
