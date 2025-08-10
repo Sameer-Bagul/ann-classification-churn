@@ -269,9 +269,23 @@ if st.button("🔮 Predict Churn Probability", type="primary"):
     # Step 3: Scale the features (75% progress)
     status_text.text('Scaling features...')
     progress_bar.progress(75)
-    
+
     # Apply the same scaling used during training
     # This ensures features have the same distribution as training data
+    # Fix: Ensure input_data columns match scaler's expected features
+    # Drop target column if present
+    target_col = 'EstimatedSalary'
+    if target_col in input_data.columns and target_col not in scaler.feature_names_in_:
+        input_data = input_data.drop(target_col, axis=1)
+
+    # Add missing columns with default value (0)
+    for col in scaler.feature_names_in_:
+        if col not in input_data.columns:
+            input_data[col] = 0
+
+    # Reorder columns to match scaler
+    input_data = input_data[scaler.feature_names_in_]
+
     input_data_scaled = scaler.transform(input_data)
     
     # Step 4: Make prediction (100% progress)
