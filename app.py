@@ -19,6 +19,12 @@ import tensorflow as tf             # Deep learning framework
 from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 import pandas as pd                 # Data manipulation and analysis
 import pickle                       # For loading saved preprocessing objects
+st.set_page_config(
+    page_title="Customer Churn Prediction",
+    page_icon="🏦",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 # ============================================================================
 # MODEL AND PREPROCESSING OBJECTS LOADING
