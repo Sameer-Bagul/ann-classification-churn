@@ -151,17 +151,17 @@ datasets/
 raw_data/
 
 # Model files (these can be large and regenerated)
-*.h5
-*.hdf5
-*.pkl
-*.pickle
-*.joblib
-*.model
-*.pt
-*.pth
-*.onnx
-models/
-saved_models/
+# *.h5
+# *.hdf5
+# *.pkl
+# *.pickle
+# *.joblib
+# *.model
+# *.pt
+# *.pth
+# *.onnx
+# models/
+# saved_models/
 
 # BUT KEEP ESSENTIAL MODEL FILES FOR THIS PROJECT (uncomment if you want to track them)
 # !model.h5
